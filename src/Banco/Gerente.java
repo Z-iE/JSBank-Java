@@ -10,8 +10,8 @@ public class Gerente extends Funcionario{
     public Gerente(String name, int senhaInserida, int salario, String loginInserido) {
         super(name, senhaInserida, salario, loginInserido);
 
-        this.gerenteAutenticacao = new Autenticacao(senhaInserida, this.getSenhaTodosGerentes(),
-                loginInserido, this.getLoginTodosGerentes());
+        //this.gerenteAutenticacao = new Autenticacao(senhaInserida, this.getSenhaTodosGerentes(),
+                //loginInserido, this.getLoginTodosGerentes());
     }
 
 

@@ -1,26 +1,24 @@
 package Banco;
 
 public class Autenticacao {
+    // -- Atributos necessários para autenticação;
+    private int senhaCliente;
+    private int contaDoCliente;
 
-    private int senhaInserida;
-    private int senhaClasse;
-    private String login;
-    private String loginInserido;
-
-    public Autenticacao(int senhaInserida, int senhaClasse, String login, String loginInserido) {
-       this.senhaInserida = senhaInserida;
-       this.senhaClasse = senhaClasse;
-       this.login = login;
-       this.loginInserido = loginInserido;
+    // -- Atributos necessários para autenticação;
+    public Autenticacao(int senhaInserida, int loginInserido) {
+       this.senhaCliente = senhaInserida;
+       this.contaDoCliente = loginInserido;
     }
 
-    public boolean Autentica(){
-        if (this.senhaInserida == this.senhaClasse && this.login.equals(this.loginInserido)){
-            System.out.println("Usuário logado");
+    // -- Método de autenticação recebe o login (número da conta) e a senha do cliente;
+    public boolean Autentica(int loginInserida, int senhaInserida){
+        if (this.senhaCliente == senhaInserida && this.contaDoCliente == loginInserida){
+            System.out.println("\nUsuário logado");
             return true;
         }
         else {
-            System.out.println("Login errado");
+            System.out.println("\nLogin errado");
             return false;
         }
     }

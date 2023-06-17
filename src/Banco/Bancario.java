@@ -9,8 +9,8 @@ public class Bancario extends Funcionario{
     public Bancario(String name, int senhaInserida, double salario, String loginInserido) {
         super(name, senhaInserida, salario, loginInserido);
 
-        this.bancarioAutenticacao = new Autenticacao(senhaInserida, this.getSenhaTodosBancarios(),
-                loginInserido, this.getLoginTodosBancarios());
+        //this.bancarioAutenticacao = new Autenticacao(senhaInserida, this.getSenhaTodosBancarios(),
+                //loginInserido, this.getLoginTodosBancarios());
     }
 
 // Getter e Setters

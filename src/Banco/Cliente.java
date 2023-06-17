@@ -2,60 +2,60 @@ package Banco;
 
 public class Cliente {
 
-    private String name;
+    // -- Atributos
+    // -- O cliente TEM UM nome, CPF, senha de login e número de conta para login, também possui uma autenticação
+    //    e o cliente TEM UMA conta poupança ou corrente;
+    private String nome;
     private String CPF;
-    private int senhaTodosClientes = 120;
-    private int senhaInserida;
-    private String loginTodosClientes = "login";
+    private int senhaDoCliente;
+    private int loginContaDoCliente;
     protected Autenticacao clienteAutenticacao;
     protected contaPoupanca contaP;
     protected contaCorrente contaC;
 
-// Construtor
-
-
-
-    public Cliente(String name, String CPF, String loginInserido, int senhaInserida) {
-        this.name = name;
+    // -- Construtor usado quando é criado uma conta sem passar pelo cliente;
+    public Cliente(String nome, String CPF, int contaInserida, int senhaInserida) {
+        this.nome = nome;
         this.CPF = CPF;
-        this.senhaInserida = senhaInserida;
-        this.clienteAutenticacao = new Autenticacao(senhaInserida, this.senhaTodosClientes, loginInserido, this.loginTodosClientes);
-
+        this.senhaDoCliente = senhaInserida;
+        this.loginContaDoCliente = contaInserida;
+        this.clienteAutenticacao = new Autenticacao(this.senhaDoCliente, this.loginContaDoCliente);
     }
-
-    public Cliente(String name, String CPF, String loginInserido, int senhaInserida, int tipoDeConta, int numeroConta, int agencia) {
-        this.name = name;
+    // -- Construtor usado quando é criado um cliente para então gerar a conta;
+    public Cliente(String nome, String CPF, int senhaInserida, int tipoDeConta, int numeroConta, int agencia) {
+        this.nome = nome;
         this.CPF = CPF;
-        this.senhaInserida = senhaInserida;
-        this.clienteAutenticacao = new Autenticacao(senhaInserida, this.getSenhaTodosClientes(), loginInserido, this.getloginTodosClientes());
-
+        this.senhaDoCliente = senhaInserida;
+        this.loginContaDoCliente = numeroConta;
+        this.clienteAutenticacao = new Autenticacao(this.senhaDoCliente, this.loginContaDoCliente);
+        // -- Teste para saber que tipo de conta será: 1 Poupança, 2 Corrente;
         if (tipoDeConta == 1){
-            this.contaP = new contaPoupanca(numeroConta, agencia, name, CPF, senhaInserida, loginInserido);
+            this.contaP = new contaPoupanca(numeroConta, agencia, nome, CPF, senhaInserida);
         } else if (tipoDeConta == 2) {
-            this.contaC  = new contaCorrente(numeroConta, agencia, name, CPF, senhaInserida, loginInserido);
+            this.contaC  = new contaCorrente(numeroConta, agencia, nome, CPF, senhaInserida);
         }
     }
 
 // Getters e Setters
-    public String getName() {
-        return name;
+    public String getNome() {
+        return nome;
     }
-
     public String getCPF() {
         return CPF;
     }
-
-
-    public int getSenhaTodosClientes() {
-        return senhaTodosClientes;
+    public int getSenhaDoCliente() {
+        return senhaDoCliente;
     }
-
-    public int getSenhaInserida() {
-        return senhaInserida;
+    public int getLoginContaDoCliente() {
+        return loginContaDoCliente;
     }
-    public String getloginTodosClientes() {
-        return loginTodosClientes;
+    public Autenticacao getClienteAutenticacao() {
+        return clienteAutenticacao;
     }
-
-
+    public contaPoupanca getContaP() {
+        return contaP;
+    }
+    public contaCorrente getContaC() {
+        return contaC;
+    }
 }

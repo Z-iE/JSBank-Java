@@ -2,16 +2,25 @@ package Banco;
 
 public class Main {
 
-    //Digite: nome, CPF, login, senha
-    // ou adicione o tipo de conta, poupança (1) e corrente (2), o número da conta a agência
+
 
     public static void main(String[] args) {
-        Cliente pedro = new Cliente("Pedro Martins", "192.121.192-12", "login",
-                120, 1, 123, 189 );
-        pedro.contaP.saldo();
-        pedro.contaP.depositar(100);
-        pedro.contaP.sacar(50);
 
+        // Criação de um cliente com conta corrente, deposito, saque;
+        Cliente paulo = new Cliente("Paulo Gomes", "189.234.192-12", 123, 2,111, 10);
+        //paulo.contaC.depositar(100, "189.234.192-12");
+        //paulo.contaC.sacar(20);
+
+        // Criação de um cliente com conta poupança, deposito, transferência e deposito remunerado;
+        Cliente julia = new Cliente("Julia Silva", "123.345.819-12", 111, 1, 991, 120);
+        julia.contaP.depositar(500,"123.345.819-12");
+        // Teste de Transferência com CPF errado.
+        julia.contaP.transferir(100, julia.contaP, paulo.contaC,"182.234.192-12");
+        // CPF correto
+        julia.contaP.transferir(100, julia.contaP, paulo.contaC,"189.234.192-12");
+        julia.contaP.depositoRemunerado();
+        // Apresentação da conta
+        julia.contaP.conta();
 
     }
 }
