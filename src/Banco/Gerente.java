@@ -3,26 +3,17 @@ package Banco;
 public class Gerente extends Funcionario{
 
     public Autenticacao gerenteAutenticacao;
-    private int senhaTodosGerentes = 220;
-    private String loginTodosGerentes = "gerentelogin";
+    private double salario = 2700.00;
 
 // Construtor
-    public Gerente(String name, int senhaInserida, int salario, String loginInserido) {
-        super(name, senhaInserida, salario, loginInserido);
+    public Gerente(String name, int senhaInserida,  String loginInserido) {
+        super(name, senhaInserida, loginInserido);}
 
-        //this.gerenteAutenticacao = new Autenticacao(senhaInserida, this.getSenhaTodosGerentes(),
-                //loginInserido, this.getLoginTodosGerentes());
+    public double getSalario() {
+        return salario;
     }
 
 
-// Getters e Setters
-    public int getSenhaTodosGerentes() {
-        return senhaTodosGerentes;
-    }
-
-    public String getLoginTodosGerentes() {
-        return loginTodosGerentes;
-    }
 
 // Métodos
     @Override

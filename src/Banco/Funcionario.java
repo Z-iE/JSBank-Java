@@ -3,14 +3,12 @@ package Banco;
 public abstract class Funcionario {
     private String nome;
     private int senhaInserida;
-    private double salario;
     private String loginInserido;
 
 // Construtor
-    public Funcionario(String nome, int senhaInserida, double salario, String loginInserido) {
+    public Funcionario(String nome, int senhaInserida, String loginInserido) {
         this.nome = nome;
         this.senhaInserida = senhaInserida;
-        this.salario = salario;
         this.loginInserido = loginInserido;
     }
 
@@ -23,9 +21,7 @@ public abstract class Funcionario {
         return senhaInserida;
     }
 
-    public double getSalario() {
-        return salario;
-    }
+
 
     public String getLoginInserido() {
         return loginInserido;

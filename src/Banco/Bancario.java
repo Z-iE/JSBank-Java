@@ -2,27 +2,17 @@ package Banco;
 
 public class Bancario extends Funcionario{
     public Autenticacao bancarioAutenticacao;
-    private int senhaTodosBancarios = 320;
-    private String loginTodosBancarios = "bancariologin";
+    double salario = 1200.00;
 
-// Construtor
-    public Bancario(String name, int senhaInserida, double salario, String loginInserido) {
-        super(name, senhaInserida, salario, loginInserido);
-
-        //this.bancarioAutenticacao = new Autenticacao(senhaInserida, this.getSenhaTodosBancarios(),
-                //loginInserido, this.getLoginTodosBancarios());
+    public Bancario(String nome, int senhaInserida, String loginInserido) {
+        super(nome, senhaInserida, loginInserido);
     }
 
-// Getter e Setters
-    public int getSenhaTodosBancarios() {
-        return senhaTodosBancarios;
+    public double getSalario() {
+        return salario;
     }
 
-    public String getLoginTodosBancarios() {
-        return loginTodosBancarios;
-    }
-
-// Métodos
+    // Métodos
     @Override
     public void bonificacao() {
         System.out.println( this.getSalario() + (this.getSalario() * 0.2));
