@@ -3,16 +3,20 @@ package Banco;
 public abstract class Funcionario {
     private String nome;
     private int senhaInserida;
-    private String loginInserido;
+    private int loginInserido;
+    public Autenticacao autenticacao;
 
 // Construtor
-    public Funcionario(String nome, int senhaInserida, String loginInserido) {
+    public Funcionario(String nome, int senhaInserida, int loginInserido) {
         this.nome = nome;
         this.senhaInserida = senhaInserida;
         this.loginInserido = loginInserido;
+        this.autenticacao = new Autenticacao(senhaInserida, loginInserido);
     }
 
 // Getters e Setters
+
+
     public String getNome() {
         return nome;
     }
@@ -21,17 +25,11 @@ public abstract class Funcionario {
         return senhaInserida;
     }
 
-
-
-    public String getLoginInserido() {
+    public int getLoginInserido() {
         return loginInserido;
     }
 
-    public Funcionario(String loginInserido) {
-        this.loginInserido = loginInserido;
-    }
-
     // Métodos
-    public abstract void bonificacao();
+        public abstract void bonificacao();
 
 }

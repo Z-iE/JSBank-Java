@@ -4,17 +4,21 @@ public class Seguro implements calculaImposto{
 
     @Override
     public double taxaAdministrativa(double tempo) {
-        return 30 * tempo;
+        return 5 * tempo;
     }
 
     @Override
     public double calculaTaxa(double valor, double pessoas) {
-        return valor - (pessoas * 180);
+        return valor - (pessoas * 80);
     }
 
-    public void seguroSimples(double valorDaCapitalizacao, double tempo, double pessoas){
-        valorDaCapitalizacao = valorDaCapitalizacao * ((0.05 * tempo) + 1);
-        System.out.println(calculaTaxa(valorDaCapitalizacao, pessoas) - taxaAdministrativa(tempo));
+    public void seguroSimples(double valorDoSeguro, double tempo, double pessoas){
+        if(valorDoSeguro >= (pessoas * 160)){
+            valorDoSeguro = valorDoSeguro * ((0.05 * tempo) + 1);
+        System.out.println(calculaTaxa(valorDoSeguro, pessoas) - taxaAdministrativa(tempo));}
+        else {
+            System.out.println("Valor insuficiente para seguro");
+        }
     }
     public void seguroComposto(double valorDaCapitalizacao, double tempo, double pessoas){
         valorDaCapitalizacao = valorDaCapitalizacao * Math.pow(1.08, tempo);
