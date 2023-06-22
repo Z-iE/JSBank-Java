@@ -22,8 +22,8 @@ public class Cliente {
         this.senhaDoCliente = senhaInserida;
         this.loginContaDoCliente = contaInserida;
         this.clienteAutenticacao = new Autenticacao(this.senhaDoCliente, this.loginContaDoCliente);
-
     }
+
     // -- Construtor usado quando é criado um cliente para então gerar a conta;
     public Cliente(String nome, String CPF, int senhaInserida, int tipoDeConta, int numeroConta, int agencia) {
         this.nome = nome;
@@ -32,24 +32,24 @@ public class Cliente {
         this.loginContaDoCliente = numeroConta;
         this.clienteAutenticacao = new Autenticacao(this.senhaDoCliente, this.loginContaDoCliente);
 
-
         // -- Teste para saber que tipo de conta será: 1 Poupança, 2 Corrente;
         if (tipoDeConta == 1){
             this.contaP = new contaPoupanca(numeroConta, agencia, nome, CPF, senhaInserida);
-        } else if (tipoDeConta == 2) {
+        }
+        else if (tipoDeConta == 2) {
             this.contaC  = new contaCorrente(numeroConta, agencia, nome, CPF, senhaInserida);
         }
     }
-
+    // Criação de uma capitalização para o cliente;
     public void Capitalizacao (){
         this.cap = new Capitalizacao();
     }
-
+    // Criação de um seguro para o cliente;
     public void Seguro(){
         this.seguro = new Seguro();
     }
 
-// Getters e Setters
+    // Getters e Setters
     public String getNome() {
         return nome;
     }
@@ -71,4 +71,17 @@ public class Cliente {
     public contaCorrente getContaC() {
         return contaC;
     }
+
+    public void infoCliente(){
+        System.out.println();
+        System.out.println("------------------------------");
+        System.out.println(this.getNome());
+        System.out.println(this.getCPF());
+        if(this.cap != null){
+            this.cap.infoCap();}
+        if(this.seguro!= null){
+            this.seguro.infoSeguro();}
+        }
+
 }
+

@@ -1,25 +1,40 @@
 package Banco;
 
-import static Banco.Bancario.BonificacaoBancarios;
 
 public class Gerente extends Funcionario{
-
-    public Autenticacao gerenteAutenticacao;
     private double salario = 2700.00;
-
+    private static double numGerentes;
 
 // Construtor
-    public Gerente(String name,  int loginInserido, int senhaInserida) {
-        super(name, senhaInserida, loginInserido);}
+    public Gerente(String Nome,  String CPF, int Agencia) {
+        super(Nome, CPF, Agencia);
+        numGerentes++;
+    }
+
 
     public double getSalario() {
         return salario;
     }
 
-    // Métodos
+    public static double getNumGerentes() {
+        return numGerentes;
+    }
+// Métodos
 
     @Override
-    public void bonificacao() {
-        System.out.println(this.getSalario() + (BonificacaoBancarios()/2));
+    public void salarioFinal() {
+        System.out.println("Bônus do gerente: " + ((Bancario.getBonificacaoBancarios()/2)/numGerentes));
+        System.out.println("Salário final: " + (this.getSalario() + ((Bancario.getBonificacaoBancarios()/2)/numGerentes)));
+    }
+
+    @Override
+    public void infoFuncionario() {
+        System.out.println();
+        System.out.println("-------------------------");
+        System.out.println("Informações Sobre o Gerente:");
+        System.out.println("Nome do gerente: " + this.getNome() + ".");
+        System.out.println("Número do CPF: " + this.getCPF() + ".");
+        System.out.println("Numero da agência de lotação: " + this.getAgencia() + "°");
+        this.salarioFinal();
     }
 }

@@ -1,6 +1,7 @@
 package Banco;
 
 public class Seguro implements calculaImposto{
+    protected double total;
 
     @Override
     public double taxaAdministrativa(double tempo) {
@@ -12,18 +13,27 @@ public class Seguro implements calculaImposto{
         return valor - (pessoas * 80);
     }
 
-    public void seguroSimples(double valorDoSeguro, double tempo, double pessoas){
+    public void seguroSimples(double valorDoSeguro, double tempo, double pessoas, Bancario bancario){
         if(valorDoSeguro >= (pessoas * 160)){
+            bancario.testeBonificacao(valorDoSeguro, bancario);
             valorDoSeguro = valorDoSeguro * ((0.05 * tempo) + 1);
-        System.out.println(calculaTaxa(valorDoSeguro, pessoas) - taxaAdministrativa(tempo));}
+        this.total = calculaTaxa(valorDoSeguro, pessoas) - taxaAdministrativa(tempo);}
         else {
-            System.out.println("Valor insuficiente para seguro");
+            System.out.println("Valor insuficiente para a contratação do seguro;");
         }
     }
-    public void seguroComposto(double valorDaCapitalizacao, double tempo, double pessoas){
-        valorDaCapitalizacao = valorDaCapitalizacao * Math.pow(1.08, tempo);
-        double total = calculaTaxa(valorDaCapitalizacao, pessoas) - taxaAdministrativa(tempo);
-        System.out.printf("%.2f", total);
+    public void seguroComposto(double valorDoSeguro, double tempo, double pessoas, Bancario bancario){
+        if(valorDoSeguro >= (pessoas * 160)){
+            bancario.testeBonificacao(valorDoSeguro, bancario);
+        valorDoSeguro = valorDoSeguro * Math.pow(1.08, tempo);
+        this.total = calculaTaxa(valorDoSeguro, pessoas) - taxaAdministrativa(tempo);
+        }else {
+            System.out.println("Valor insuficiente para a contratação do seguro;");
+        }
+    }
+    public void infoSeguro(){
+        System.out.printf("Valor de retorno do seguro contratado: R$%.2f", this.total);
+        System.out.println();
     }
 
 }

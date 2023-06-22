@@ -14,11 +14,11 @@ public class Autenticacao {
     // -- Método de autenticação recebe o login (número da conta) e a senha do cliente;
     public boolean Autentica(int loginInserida, int senhaInserida){
         if (this.senhaCliente == senhaInserida && this.contaDoCliente == loginInserida){
-            System.out.println("\nUsuário logado");
+            System.out.println("\nUsuário logado.");
             return true;
         }
         else {
-            System.out.println("\nLogin errado");
+            System.out.println("\nLogin errado.");
             return false;
         }
     }
